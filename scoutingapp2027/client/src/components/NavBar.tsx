@@ -131,11 +131,21 @@ export default function Navbar() {
         <Sidebar onNavigate={() => setOpen(false)} />
       </aside>
 
-      {/* Desktop sidebar */}
-      <aside className="hidden h-screen w-80 border-r border-zinc-800 bg-zinc-900 lg:block">
-        <Sidebar />
-      </aside>
-      <Outlet />
+      {/* Desktop layout */}
+      <div className="hidden lg:flex h-screen">
+        <aside className="w-80 shrink-0 border-r border-zinc-800 bg-zinc-900">
+          <Sidebar />
+        </aside>
+
+        <main className="flex-1 overflow-auto">
+          <Outlet />
+        </main>
+      </div>
+
+      {/* Mobile content */}
+      <main className="lg:hidden">
+        <Outlet />
+      </main>
     </>
   );
 }
