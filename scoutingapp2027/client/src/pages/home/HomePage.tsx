@@ -1,4 +1,3 @@
-import { DirectoryGrid, DirectoryShell } from '../../components/DirectoryShell'
 
 const homeCards = [
   { to: '/scouting', label: 'Scouting', description: 'Match scout, pit scout, strategic scout, and data lookup' },
@@ -8,11 +7,6 @@ const homeCards = [
 
 export function HomePage() {
   return (
-    <DirectoryShell
-      title="Home Directory"
-      subtitle="Choose one of the top-level pages below. Scouting opens a second directory with its own four pages."
-    >
-      <DirectoryGrid cards={homeCards} />
 
       <section className="grid gap-6 lg:grid-cols-[1.3fr_0.9fr]">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20">
@@ -35,6 +29,5 @@ export function HomePage() {
           </p>
         </aside>
       </section>
-    </DirectoryShell>
   )
 }

@@ -1,13 +1,20 @@
 @import "tailwindcss";
+@plugin "daisyui";
 
-html,
-body,
-#root {
-	min-height: 100%;
-	font-family: 'Figtree';
+@theme {
+	--color-team: #32a7dc;
 }
 
-body {
-	margin: 0;
-	background: #32a7dc;
+input {
+  --font-size: 1.5rem;
+  --size: 2.5rem;
+  text-align: center;
+	width: 100%;
+}
+
+select {
+	--font-size: 1.5rem;
+	--size: 2.5rem;
+	text-align: center;
+	width: 100%;
 }

@@ -1,5 +1,5 @@
 
-export function MatchScoutPage() {
+export function DtfPage() {
   return (
       <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20">

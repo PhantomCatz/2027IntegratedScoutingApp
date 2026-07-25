@@ -52,7 +52,7 @@ const sections = [
 ];
 function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <div className="flex h-full flex-col bg-zinc-900 text-white">
+    <div className="text-white">
       {sections.map((section) => (
         <div
           key={section.title}
@@ -71,7 +71,7 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
                 className={({ isActive }) =>
                   `flex w-full items-center gap-3 rounded-full px-4 py-3 transition ${
                     isActive
-                      ? "bg-slate-600 text-white"
+                      ? "bg-team text-white"
                       : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
                   }`
                 }
@@ -92,16 +92,16 @@ export default function Navbar() {
   return (
     <>
       {/* Mobile header */}
-      <header className="flex h-16 items-center border-b border-zinc-800 bg-zinc-900 px-4 lg:hidden">
+      <header className="flex h-16 items-center border-zinc-800 bg-team px-4 lg:hidden">
         <button
           onClick={() => setOpen(true)}
           className="rounded-md p-2 hover:bg-zinc-800"
         >
           <Bars3Icon className="h-6 w-6 text-white" />
         </button>
-
-        <span className="ml-4 text-lg font-medium text-white">
-          Scouting App
+        <img src="https://www.thebluealliance.com/avatar/2026/frc2637.png" alt="Logo" className="ml-2 h-10 w-10" />
+        <span className="ml-4 text-xl font-bold">
+          2637 Scouting App
         </span>
       </header>
 
@@ -118,7 +118,7 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       <aside
-        className={`fixed left-0 top-0 z-50 h-screen w-80 transform bg-zinc-900 shadow-xl transition-transform duration-300 lg:hidden
+        className={`fixed left-0 top-0 z-50 h-screen w-80 transform bg-black shadow-xl transition-transform duration-300 lg:hidden
           ${open ? "translate-x-0" : "-translate-x-full"}`}
       >
         <button
