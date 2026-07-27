@@ -50,9 +50,10 @@ const sections = [
     ],
   },
 ];
+
 function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   return (
-    <div className="text-white">
+    <div className="h-full overflow-y-auto text-white">
       {sections.map((section) => (
         <div
           key={section.title}
@@ -62,7 +63,7 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
             {section.title}
           </h2>
 
-          <div className="space-y-1 px-3">
+          <div className="space-y-1 px-3 pb-6">
             {section.items.map((item) => (
               <NavLink
                 key={item.label}
@@ -86,21 +87,28 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
     </div>
   );
 }
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       {/* Mobile header */}
-      <header className="flex h-16 items-center border-zinc-800 bg-team px-4 lg:hidden">
+      <header className="flex h-16 items-center bg-team px-4 lg:hidden">
         <button
           onClick={() => setOpen(true)}
           className="rounded-md p-2 hover:bg-zinc-800"
         >
           <Bars3Icon className="h-6 w-6 text-white" />
         </button>
-        <img src="https://www.thebluealliance.com/avatar/2026/frc2637.png" alt="Logo" className="ml-2 h-10 w-10" />
-        <span className="ml-4 text-xl font-bold">
+
+        <img
+          src="https://www.thebluealliance.com/avatar/2026/frc2637.png"
+          alt="Logo"
+          className="ml-2 h-10 w-10"
+        />
+
+        <span className="ml-4 text-xl font-bold text-white">
           2637 Scouting App
         </span>
       </header>
@@ -108,32 +116,37 @@ export default function Navbar() {
       {/* Overlay */}
       <div
         onClick={() => setOpen(false)}
-        className={`fixed inset-0 z-40 bg-black/50 transition-opacity lg:hidden
-          ${
-            open
-              ? "pointer-events-auto opacity-100"
-              : "pointer-events-none opacity-0"
-          }`}
+        className={`fixed inset-0 z-40 bg-black/50 transition-opacity lg:hidden ${
+          open
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
       />
 
       {/* Mobile drawer */}
       <aside
-        className={`fixed left-0 top-0 z-50 h-screen w-80 transform bg-black shadow-xl transition-transform duration-300 lg:hidden
-          ${open ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed left-0 top-0 z-50 flex h-screen w-80 transform flex-col bg-black shadow-xl transition-transform duration-300 lg:hidden ${
+          open ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <button
           onClick={() => setOpen(false)}
-          className="absolute right-4 top-4 rounded-md p-2 hover:bg-zinc-800"
+          className="absolute right-4 top-4 z-10 rounded-md p-2 hover:bg-zinc-800"
         >
           <XMarkIcon className="h-6 w-6 text-white" />
         </button>
 
-        <Sidebar onNavigate={() => setOpen(false)} />
+        <div
+          className="flex-1 overflow-y-auto"
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
+          <Sidebar onNavigate={() => setOpen(false)} />
+        </div>
       </aside>
 
       {/* Desktop layout */}
-      <div className="hidden lg:flex h-screen">
-        <aside className="w-80 shrink-0 border-r border-zinc-800 bg-zinc-900">
+      <div className="hidden h-screen lg:flex">
+        <aside className="w-80 shrink-0 overflow-y-auto border-r border-zinc-800 bg-zinc-900">
           <Sidebar />
         </aside>
 

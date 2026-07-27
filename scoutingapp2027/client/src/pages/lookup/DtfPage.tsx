@@ -1,24 +1,67 @@
+import { useParams } from "react-router-dom";
 
 export function DtfPage() {
-  return (
-      <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20">
-          <h2 className="text-xl font-bold text-white">Match Scout</h2>
-          <p className="mt-1 text-sm text-slate-400">Record match performance, notes, and live observations.</p>
-          <div className="mt-5 space-y-4">
-            <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300">Auto routine quality</div>
-            <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300">Defense effectiveness</div>
-            <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300">Endgame consistency</div>
-          </div>
-        </div>
+	const { teams } = useParams();
 
-        <aside className="rounded-3xl border border-cyan-400/20 bg-gradient-to-br from-cyan-400/10 via-slate-900 to-slate-950 p-6 shadow-xl shadow-cyan-950/20">
-          <h2 className="text-xl font-bold text-white">Quick actions</h2>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <button className="rounded-full bg-cyan-400 px-5 py-2.5 text-sm font-semibold text-slate-950">Save match scout</button>
-            <button className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-slate-100">Reset</button>
-          </div>
-        </aside>
-      </section>
-  )
+	const teamNumbers = teams?.split(",").filter((team) => team.length > 0) ?? [];
+
+	const redTeams = teamNumbers.slice(0, 3);
+	const blueTeams = teamNumbers.slice(3, 6).length
+		? teamNumbers.slice(3, 6)
+		: ["None"];
+	return (
+		<fieldset className="fieldset rounded-box p-4">
+			<legend className="fieldset-legend">
+				<div className="breadcrumbs text-xl">
+					<ul>
+						<li>
+							<a href="../dtf/">DTF</a>
+						</li>
+						<li className="text-lg font-bold">
+							<a className="text-error">
+								{redTeams.map((team, i) => ` ${team}`)}
+							</a>
+							&nbsp;vs&nbsp;
+							<a className="text-info">
+								{blueTeams.map((team, i) => ` ${team}`)}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</legend>
+			{/* name of each tab group should be unique */}
+			<div className="tabs tabs-box">
+				<input
+					type="radio"
+					name="my_tabs_6"
+					className="tab"
+					aria-label="Tab 1"
+				/>
+				<div className="tab-content bg-base-100 border-base-300 p-6">
+					Tab content 1
+				</div>
+
+				<input
+					type="radio"
+					name="my_tabs_6"
+					className="tab"
+					aria-label="Tab 2"
+					defaultChecked
+				/>
+				<div className="tab-content bg-base-100 border-base-300 p-6">
+					Tab content 2
+				</div>
+
+				<input
+					type="radio"
+					name="my_tabs_6"
+					className="tab"
+					aria-label="Tab 3"
+				/>
+				<div className="tab-content bg-base-100 border-base-300 p-6">
+					Tab content 3
+				</div>
+			</div>
+		</fieldset>
+	);
 }

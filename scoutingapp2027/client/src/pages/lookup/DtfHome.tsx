@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getQualMatchData, getAllianceTeams } from "../../components/tbaLookup";
 
 export function DtfHome() {
@@ -7,6 +8,8 @@ export function DtfHome() {
 
 	const [redTeams, setRedTeams] = useState<number[]>([0, 0, 0]);
 	const [blueTeams, setBlueTeams] = useState<number[]>([0, 0, 0]);
+
+	const navigate = useNavigate();
 
 	async function fetchMatchTeams(number: number) {
 		const data = await getQualMatchData(number);
@@ -91,14 +94,29 @@ export function DtfHome() {
 		}
 	}
 
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		const teams = [...redTeams, ...blueTeams].filter((team) => team > 0);
+		console.log(teams);
+		navigate(`../dtf/${teams.join(",")}`);
+	}
+
 	return (
 		<form
-			onSubmit={(e) => e.preventDefault()}
+			onSubmit={(e) => {
+				handleSubmit(e);
+			}}
 			className="flex flex-col gap-4"
 		>
 			<fieldset className="fieldset rounded-box p-4">
-				<legend className="fieldset-legend text-xl">
-					Drive Team Feeder
+				<legend className="fieldset-legend">
+					<div className="breadcrumbs text-xl">
+						<ul>
+							<li>
+								<a href="../dtf">DTF</a>
+							</li>
+						</ul>
+					</div>
 				</legend>
 
 				<label className="label flex items-center gap-2">
@@ -120,8 +138,7 @@ export function DtfHome() {
 
 					<input
 						type="number"
-						className="input validator join-item"
-						min="1"
+						className="input input-field validator join-item"
 						value={matchNumber}
 						onChange={handleMatchNumberChange}
 						disabled={loading}
@@ -137,57 +154,36 @@ export function DtfHome() {
 					</button>
 				</div>
 
-				<label className="label text-lg font-bold">
-					Red Alliance
-				</label>
+				<label className="label text-lg font-bold">Red Alliance</label>
 
 				{redTeams.map((team, i) => (
 					<div key={`red-${i}`}>
-						<label className="label">
-							Team {i + 1}
-						</label>
+						<label className="label">Team {i + 1}</label>
 						<input
 							type="number"
-							className="input input-error validator"
+							className="input input-field input-error validator"
 							value={team || ""}
-							onChange={(e) =>
-								updateTeam(
-									i,
-									Number(e.target.value),
-									true,
-								)
-							}
+							required={i === 0}
+							onChange={(e) => updateTeam(i, Number(e.target.value), true)}
 						/>
 					</div>
 				))}
 
-				<label className="label text-lg font-bold">
-					Blue Alliance
-				</label>
+				<label className="label text-lg font-bold">Blue Alliance</label>
 
 				{blueTeams.map((team, i) => (
 					<div key={`blue-${i}`}>
-						<label className="label">
-							Team {i + 1}
-						</label>
+						<label className="label">Team {i + 1}</label>
 						<input
 							type="number"
-							className="input input-info validator"
+							className="input input-field input-info validator"
 							value={team || ""}
-							onChange={(e) =>
-								updateTeam(
-									i,
-									Number(e.target.value),
-									false,
-								)
-							}
+							onChange={(e) => updateTeam(i, Number(e.target.value), false)}
 						/>
 					</div>
 				))}
 
-				<label className="label">
-					Red Alliance
-				</label>
+				<label className="label">Red Alliance</label>
 
 				<select
 					className="select select-error"
@@ -205,9 +201,7 @@ export function DtfHome() {
 					<option>Alliance 8</option>
 				</select>
 
-				<label className="label">
-					Blue Alliance
-				</label>
+				<label className="label">Blue Alliance</label>
 
 				<select
 					className="select select-info"
