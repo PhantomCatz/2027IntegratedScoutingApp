@@ -1,0 +1,46 @@
+import {useState} from 'react';
+
+export function MatchInfo () {
+  const [match, setMatch] = useState('');
+  const [robotPosition, setRobotPosition] = useState('');
+  type robotPosition = "r1" | "r2" | "r3" | "b1" | "b2" | "b3";
+  const robotPositionOptions : {label: string, value: robotPosition} []= [
+    {label: "Red 1", value: "r1"},
+    {label: "Red 2", value: "r2"},
+    {label: "Red 3", value: "r3"},
+    {label: "Blue 1", value: "b1"},
+    {label: "Blue 2", value: "b2"},
+    {label: "Blue 3", value: "b3"},
+  ]
+   return (
+    <section className="grid gap-4 lg:grid-cols-3">
+      <article className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20">
+          <h2 className="text-lg font-bold text-white">Match Number</h2>
+          <textarea className="mt-2 text-sm text-slate-400 bg-slate-800 text-white rounded-2xl border border-white"
+          value={match}
+          onChange={(e) => setMatch(e.target.value)}/>
+        </article>
+     
+        <article className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20">
+          <h2 className="text-lg font-bold text-white">Robot Position</h2>
+         
+          <select
+          value={robotPosition}
+          onChange={(e) => setRobotPosition(e.target.value)}
+          className ="mt-2 w-full rounded-xl bg-slate-800 text-white border border-white p-3 text-sm text-slate-200 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+          >
+            {robotPositionOptions.map((option) => (
+              <option key = {option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </article>
+
+
+
+
+
+    </section>
+   );
+}
