@@ -1,6 +1,5 @@
 import {useState} from 'react';
 import {MatchInfo} from '../../components/MatchInfo'
-import { MatchInfoBar } from '../../components/MatchInfoBar';
 
 export function StrategicScoutPage() {
   
@@ -13,7 +12,6 @@ export function StrategicScoutPage() {
   ]
   return (
     <section className="grid gap-4 lg:grid-cols-3">
-        <MatchInfoBar />
         <MatchInfo />
 
         <article className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20">
