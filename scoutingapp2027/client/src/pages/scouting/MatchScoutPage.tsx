@@ -179,8 +179,8 @@ function overallMatch(): React.ReactElement {
         </label>
 
         <div>
-          <h2 className="font-bold text-white">Comments</h2>
-          <textarea className="textarea h-48 resize-none" placeholder="Bio"></textarea>
+          <h2 className="font-bold text-white">Robot Comments</h2>
+          <textarea className="textarea h-65 resize-none"></textarea>
         </div>
       </div>
     </>
