@@ -109,16 +109,9 @@ export function DtfHome() {
 			className="flex flex-col gap-4"
 		>
 			<fieldset className="fieldset rounded-box p-4">
-				<legend className="fieldset-legend">
-					<div className="breadcrumbs text-xl">
-						<ul>
-							<li>
-								<a href="../dtf">DTF</a>
-							</li>
-						</ul>
-					</div>
+				<legend className="fieldset-legend text-xl">
+					Drive Team Feeder
 				</legend>
-
 				<label className="label flex items-center gap-2">
 					<span>Match #</span>
 					{loading && (

@@ -24,3 +24,10 @@ select {
 	text-align: center;
 	width: 100%;
 }
+
+tr {
+	--font-size: 1.5rem;
+	--size: 2.5rem;
+	text-align: center;
+	width: 100%;
+}
