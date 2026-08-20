@@ -28,9 +28,7 @@ const sections = [
     divider: true,
     items: [
       { label: "Drive Team Feeder", icon: BriefcaseIcon, to: "/dtf" },
-      { label: "Match Data Lookup", icon: MagnifyingGlassIcon, to: "/scouting/datalookup" },
-      { label: "Strategic Data Lookup", icon: MagnifyingGlassIcon, to: "/scouting/datalookup" },
-      { label: "Pit Data Lookup", icon: MagnifyingGlassIcon, to: "/scouting/datalookup" },
+      { label: "Team Lookup", icon: MagnifyingGlassIcon, to: "/teamlookup" },
     ],
   },
   {

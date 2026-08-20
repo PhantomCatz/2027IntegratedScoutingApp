@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { DataLookupPage } from '../pages/lookup/DataLookupPage'
+import { TeamLookup } from '../pages/lookup/TeamLookup'
 import { DtfHome } from '../pages/lookup/DtfHome'
 import { DtfPage } from '../pages/lookup/DtfPage'
 import { HomePage } from '../pages/home/HomePage'
@@ -22,7 +22,7 @@ export default function App() {
         <Route path="/scouting/matchscout" element={<MatchScoutPage />} />
         <Route path="/scouting/pitscout" element={<PitScoutPage />} />
         <Route path="/scouting/strategicscout" element={<StrategicScoutPage />} />
-        <Route path="/scouting/datalookup" element={<DataLookupPage />} />
+        <Route path="/teamlookup/:teams?" element={<TeamLookup />} />
         <Route path="/dtf" element={<DtfHome />} />
         <Route path="/dtf/:teams" element={<DtfPage />} />
         <Route path="/picklist" element={<PicklistPage />} />
