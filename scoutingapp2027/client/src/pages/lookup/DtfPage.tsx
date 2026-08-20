@@ -1,9 +1,5 @@
 import { useParams } from "react-router-dom";
-import { DataDisplayInformationCircle } from "../../components/DataDisplayInformationCircle";
-import { MatchDataDisplay } from "../../components/MatchDataDisplay";
-import { CommentDataDisplay } from "../../components/CommentDataDisplay";
-import { PitDataDisplay } from "../../components/PitDataDisplay";
-
+import { MatchDataDisplay, CommentDataDisplay, PitDataDisplay, DataDisplayInformationCircle } from "../../components/DataDisplay";
 export function DtfPage() {
   const { teams } = useParams();
 
