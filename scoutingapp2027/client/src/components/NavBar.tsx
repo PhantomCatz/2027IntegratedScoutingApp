@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { getScoutNameCookie } from "../lib/scoutCookie";
 
 import {
   HomeIcon,
@@ -54,6 +55,7 @@ const sections = [
 
 function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const navigate = useNavigate();
+  const scoutName = getScoutNameCookie();
 
   const handleLogout = () => {
     sessionStorage.removeItem("signedIn");
@@ -98,6 +100,9 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       </div>
 
       <div className="border-t border-zinc-700 p-3">
+        {scoutName ? (
+          <p className="px-4 pb-2 text-sm text-zinc-400">Signed in as {scoutName}</p>
+        ) : null}
         <button
           type="button"
           onClick={handleLogout}

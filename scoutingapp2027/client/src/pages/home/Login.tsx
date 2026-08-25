@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { getScoutNameCookie, setScoutNameCookie } from '../../lib/scoutCookie'
 
 const LOGIN_PASSWORD = '1111'
 
 export function Login() {
   const navigate = useNavigate()
-  const [name, setName] = useState('')
+  const [name, setName] = useState(() => getScoutNameCookie())
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
@@ -24,8 +25,10 @@ export function Login() {
     }
 
     setError('')
+    const scoutName = name.trim()
     sessionStorage.setItem('signedIn', '1')
-    sessionStorage.setItem('scoutName', name.trim())
+    sessionStorage.setItem('scoutName', scoutName)
+    setScoutNameCookie(scoutName)
     navigate('/')
   }
 

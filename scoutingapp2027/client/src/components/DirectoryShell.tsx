@@ -3,6 +3,7 @@
 
 import type { ReactNode } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { ScoutIdentity } from './ScoutIdentity'
 
 export type DirectoryCard = {
   to: string
@@ -56,6 +57,7 @@ export function DirectoryShell({ title, subtitle, children, breadcrumbs }: Direc
                 <div className="min-w-0">
                   <h1 className="truncate text-2xl font-black tracking-tight text-white sm:text-3xl">{title}</h1>
                   <p className="mt-1 text-sm leading-6 text-slate-300">{subtitle}</p>
+                  <ScoutIdentity className="mt-1 text-sm text-cyan-300" />
                 </div>
               </div>
             </div>
