@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
-import { getQualMatchData, getAllianceTeams } from "../../components/tbaLookup";
 import { MatchDataDisplay, CommentDataDisplay, PitDataDisplay, DataDisplayInformationCircle } from "../../components/DataDisplay";
 
 export function TeamLookup() {
@@ -46,7 +45,7 @@ export function TeamLookup() {
             Team Lookup
             {openTeams.length > 0 && (
               <DataDisplayInformationCircle />
-      )}
+            )}
       </span>
           </legend>
           
