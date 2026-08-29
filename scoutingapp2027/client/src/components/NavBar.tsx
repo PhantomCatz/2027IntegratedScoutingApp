@@ -89,7 +89,7 @@ function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  return (
+  return (  
     <>
       {/* Mobile header */}
       <header className="flex h-16 items-center border-b border-zinc-800 bg-zinc-900 px-4 lg:hidden">
@@ -147,5 +147,5 @@ export default function Navbar() {
         <Outlet />
       </main>
     </>
-  );
+  )
 }
