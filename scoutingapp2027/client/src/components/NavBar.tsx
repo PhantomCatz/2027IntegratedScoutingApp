@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { getScoutNameCookie } from "../lib/scoutCookie";
 
 import {
   HomeIcon,
@@ -10,6 +11,7 @@ import {
   ClipboardDocumentListIcon,
   Cog6ToothIcon,
   BriefcaseIcon,
+  ArrowRightOnRectangleIcon,
 } from "@heroicons/react/24/outline";
 
 const sections = [
@@ -50,38 +52,64 @@ const sections = [
 ];
 
 function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
-  return (
-    <div className="h-full overflow-y-auto text-white">
-      {sections.map((section) => (
-        <div
-          key={section.title}
-          className={section.divider ? "border-t border-zinc-700 pt-5" : ""}
-        >
-          <h2 className="px-7 pb-4 pt-6 text-sm text-zinc-300">
-            {section.title}
-          </h2>
+  const navigate = useNavigate();
+  const scoutName = getScoutNameCookie();
 
-          <div className="space-y-1 px-3 pb-6">
-            {section.items.map((item) => (
-              <NavLink
-                key={item.label}
-                to={item.to}
-                onClick={onNavigate}
-                className={({ isActive }) =>
-                  `flex w-full items-center gap-3 rounded-full px-4 py-3 transition ${
-                    isActive
-                      ? "bg-team text-white"
-                      : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
-                  }`
-                }
-              >
-                <item.icon className="h-5 w-5 shrink-0" />
-                <span>{item.label}</span>
-              </NavLink>
-            ))}
+  const handleLogout = () => {
+    sessionStorage.removeItem("signedIn");
+    sessionStorage.removeItem("scoutName");
+    onNavigate?.();
+    navigate("/login");
+  };
+
+  return (
+    <div className="flex h-full flex-col bg-zinc-900 text-white">
+      <div className="flex-1 overflow-y-auto">
+        {sections.map((section) => (
+          <div
+            key={section.title}
+            className={section.divider ? "border-t border-zinc-700 pt-5" : ""}
+          >
+            <h2 className="px-7 pb-4 pt-6 text-sm text-zinc-300">
+              {section.title}
+            </h2>
+
+            <div className="space-y-1 px-3">
+              {section.items.map((item) => (
+                <NavLink
+                  key={item.label}
+                  to={item.to}
+                  onClick={onNavigate}
+                  className={({ isActive }) =>
+                    `flex w-full items-center gap-3 rounded-full px-4 py-3 transition ${
+                      isActive
+                        ? "bg-slate-600 text-white"
+                        : "text-zinc-300 hover:bg-zinc-800 hover:text-white"
+                    }`
+                  }
+                >
+                  <item.icon className="h-5 w-5 shrink-0" />
+                  <span>{item.label}</span>
+                </NavLink>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      <div className="border-t border-zinc-700 p-3">
+        {scoutName ? (
+          <p className="px-4 pb-2 text-sm text-zinc-400">Signed in as {scoutName}</p>
+        ) : null}
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="flex w-full items-center gap-3 rounded-full px-4 py-3 text-zinc-300 transition hover:bg-zinc-800 hover:text-white"
+        >
+          <ArrowRightOnRectangleIcon className="h-5 w-5 shrink-0" />
+          <span>Log out</span>
+        </button>
+      </div>
     </div>
   );
 }

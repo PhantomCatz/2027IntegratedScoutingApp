@@ -1,4 +1,4 @@
-
+import { DirectoryShell } from "../../components/DirectoryShell"
 export function MatchScoutPage() {
   return (
       <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
