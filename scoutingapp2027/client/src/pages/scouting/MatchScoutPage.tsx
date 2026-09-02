@@ -1,5 +1,4 @@
 import { DirectoryShell } from "../../components/DirectoryShell"
-
 export function MatchScoutPage() {
   return (
     <DirectoryShell title="Match Scout"       subtitle="2637 match scoutinglolol">
