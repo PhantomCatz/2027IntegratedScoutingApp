@@ -1,6 +1,4 @@
 import { DirectoryShell } from "../../components/DirectoryShell"
-import { ScoutIdentity } from "../../components/ScoutIdentity"
-
 export function MatchScoutPage() {
   return (
     <DirectoryShell title="Match Scout"       subtitle="2637 match scoutinglolol">
@@ -8,7 +6,6 @@ export function MatchScoutPage() {
         <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-xl shadow-black/20">
           <h2 className="text-xl font-bold text-white">Match Scout</h2>
           <p className="mt-1 text-sm text-slate-400">Record match performance, notes, and live observations.</p>
-          <ScoutIdentity className="mt-2 text-sm text-cyan-300" />
           <div className="mt-5 space-y-4">
             <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300">Auto routine quality</div>
             <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300">Defense effectiveness</div>
