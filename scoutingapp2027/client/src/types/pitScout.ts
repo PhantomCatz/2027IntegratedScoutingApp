@@ -1,0 +1,55 @@
+import * as TbaApi from "./tbaApi";
+
+export type Pit = {
+	scouter_initials: string;
+	team_number: number;
+	drive_train_type: string;
+	robot_weight: number;
+	driving_motor_type: string;
+	number_of_driving_motors: number;
+	wheel_type: string;
+	fuel_intake_location: string;
+	intake_width: string;
+	intake_type: string[];
+	max_fuel_capacity: number;
+	max_shot_range: string;
+	auto_aim: boolean;
+	trench_capability: boolean;
+	climb_during_auto: boolean;
+	can_climb_l1: boolean;
+	can_climb_l2: boolean;
+	can_climb_l3: boolean;
+	pit_organization: number;
+	team_safety: number;
+	team_workmanship: number;
+	gracious_professionalism: number;
+	comments: string;
+};
+
+export type SubmitBody = {
+	event_key: TbaApi.EventKey;
+	team_number: number;
+	scouter_initials: string;
+	robot_weight: number;
+	drive_train_type: string;
+	driving_motor_type: string;
+	number_of_driving_motors: number;
+	wheel_type: string;
+	fuel_intake_location: string;
+	intake_width: string;
+	intake_type: string;
+	max_fuel_capacity: number;
+	max_shot_range: string;
+	auto_aim: boolean;
+	trench_capability: boolean;
+	climb_during_auto: boolean;
+	can_climb_l1: boolean;
+	can_climb_l2: boolean;
+	can_climb_l3: boolean;
+	pit_organization: number;
+	team_safety: number;
+	team_workmanship: number;
+	gracious_professionalism: number;
+	comments: string;
+	robot_image_uri: string;
+};
