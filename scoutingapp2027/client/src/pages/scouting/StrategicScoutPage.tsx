@@ -1,11 +1,16 @@
 import {useState} from 'react';
 import {MatchInfo} from '../../components/MatchInfo'
 
+import type * as Database from "../types/database";
 export function StrategicScoutPage() {
   
   const [previousScout, setPreviousScout] = useState('');
   const [stratComments, setStratComments] = useState('');
-  
+  const [team_number, setTeamNumber] = useState(0);
+	const [qrValue, setQrValue] = useState<unknown>();
+	const [teamData, setTeamData] = useState<Database.StrategicEntry[] | null>(null);
+	const [_eventKey, _setEventKey] = useLocalStorage<TbaApi.EventKey>("eventKey", Constants.EVENT_KEY);
+
   const previouslyScoutedMembers: {label: string, value: string} [] = [
     {label: "'example dataset'", value: "'example dataset'"},
     {label: "'example dataset'", value: "'example dataset'"},
